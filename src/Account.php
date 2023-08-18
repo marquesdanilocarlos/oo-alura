@@ -2,15 +2,13 @@
 
 class Account
 {
-    private string $holderCpf;
-    private string $holderName;
+    private Holder $holder;
     private float $balance;
     private static int $accountNumber = 0;
 
-    public function __construct(string $holderCpf, string $holderName)
+    public function __construct(Holder $holder)
     {
-        $this->holderCpf = $holderCpf;
-        $this->setHolderName($holderName);
+        $this->holder = $holder;
         $this->balance = 0;
 
         self::$accountNumber++;
@@ -50,29 +48,9 @@ class Account
         echo "Transferência realizada com sucesso! <br/>";
     }
 
-    public function getHolderCpf(): string
-    {
-        return $this->holderCpf;
-    }
-
-    public function getHolderName(): string
-    {
-        return $this->holderName;
-    }
-
     public function getBalance(): string
     {
         return "R$ " . number_format($this->balance, 2, ",", ".");
-    }
-
-    private function setHolderName(string $name): void
-    {
-        if (strlen($name) < 5) {
-            echo "O nome precisa possuir pelo menos 5 caracteres.";
-            return;
-        }
-
-        $this->holderName = $name;
     }
 
     public static function getAccountNumber(): int
@@ -82,9 +60,13 @@ class Account
 
     public function __destruct()
     {
-        echo "A conta de {$this->holderName} foi destruída! <br/>";
+        echo "A conta de {$this->holder->getName()} foi destruída! <br/>";
         self::$accountNumber--;
     }
 
 
+    public function getHolder(): Holder
+    {
+        return $this->holder;
+    }
 }
