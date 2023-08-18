@@ -9,7 +9,7 @@ class Account
     public function __construct(string $holderCpf, string $holderName)
     {
         $this->holderCpf = $holderCpf;
-        $this->holderName = $holderName;
+        $this->setHolderName($holderName);
         $this->balance = 0;
     }
 
@@ -60,6 +60,16 @@ class Account
     public function getBalance(): string
     {
         return "R$ " . number_format($this->balance, 2, ",", ".");
+    }
+
+    private function setHolderName(string $name): void
+    {
+        if (strlen($name) < 5) {
+            echo "O nome precisa possuir pelo menos 5 caracteres.";
+            return;
+        }
+
+        $this->holderName = $name;
     }
 
 }
