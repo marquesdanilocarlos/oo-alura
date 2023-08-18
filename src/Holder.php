@@ -1,35 +1,19 @@
 <?php
 
-class Holder
+class Holder extends Person
 {
-    private Cpf $cpf;
-    private string $name;
+    private Address $address;
 
 
-    public function __construct(Cpf $cpf, string $name)
+    public function __construct(Cpf $cpf, string $name, Address $address)
     {
-        $this->cpf = $cpf;
-        $this->setName($name);
+        parent::__construct($cpf, $name);
+        $this->address = $address;
     }
 
-    public function getCpf(): Cpf
+    public function getAddress(): Address
     {
-        return $this->cpf;
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    private function setName(string $name): void
-    {
-        if (strlen($name) < 5) {
-            echo "O nome precisa possuir pelo menos 5 caracteres.";
-            return;
-        }
-
-        $this->name = $name;
+        return $this->address;
     }
 
 }
