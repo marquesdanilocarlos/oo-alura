@@ -65,9 +65,9 @@ class Account
         $this->holderName = $holderName;
     }
 
-    public function setBalance(float $balance): void
+    /*public function setBalance(float $balance): void
     {
         $this->balance = $balance;
-    }
+    }*/
 
 }
