@@ -5,12 +5,15 @@ class Account
     private string $holderCpf;
     private string $holderName;
     private float $balance;
+    private static int $accountNumber = 0;
 
     public function __construct(string $holderCpf, string $holderName)
     {
         $this->holderCpf = $holderCpf;
         $this->setHolderName($holderName);
         $this->balance = 0;
+
+        self::$accountNumber++;
     }
 
     public function withdraw(float $value): void
@@ -71,5 +74,17 @@ class Account
 
         $this->holderName = $name;
     }
+
+    public static function getAccountNumber(): int
+    {
+        return self::$accountNumber;
+    }
+
+    public function __destruct()
+    {
+        echo "A conta de {$this->holderName} foi destruída! <br/>";
+        self::$accountNumber--;
+    }
+
 
 }

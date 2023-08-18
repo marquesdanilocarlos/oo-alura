@@ -15,11 +15,7 @@ $anotherAccount->transfer(246, $account);
 $anotherAccount->withdraw(370);
 $anotherAccount->deposit(272);
 
-var_dump($account);
-var_dump($anotherAccount);
+var_dump($account, $anotherAccount);
 
 
-$thirdAccount = $account;
-//$thirdAccount->holderName = "Chris Bumstead, o CBUM!";
-
-var_dump($thirdAccount);
+var_dump(Account::getAccountNumber());
