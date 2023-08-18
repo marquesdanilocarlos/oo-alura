@@ -2,9 +2,10 @@
 
 namespace AluraBank\Model\Employee;
 
+use AluraBank\Model\Authenticable;
 use AluraBank\Model\Cpf;
 
-class Director extends Employee
+class Director extends Employee implements Authenticable
 {
     public function __construct(Cpf $cpf, string $name, float $wage)
     {
