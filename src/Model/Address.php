@@ -8,6 +8,7 @@ use function ucfirst;
 
 final class Address
 {
+    use Accessor;
     private string $street;
     private string $number;
     private string $neighborhood;
@@ -64,29 +65,6 @@ final class Address
     public function setCity(string $city): void
     {
         $this->city = $city;
-    }
-
-    public function __get(string $name)
-    {
-        $method = "get" . ucfirst($name);
-
-        if (!method_exists(self::class, $method)) {
-            return false;
-        }
-
-        return $this->{$method}();
-    }
-
-    public function __set(string $name, $value): void
-    {
-        $method = "set" . ucfirst($name);
-
-        if (!method_exists(self::class, $method)) {
-            echo "Método inexistente! <br/>";
-            return;
-        }
-
-        $this->{$method}($value);
     }
 
 }

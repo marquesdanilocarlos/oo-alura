@@ -2,10 +2,14 @@
 
 namespace AluraBank\Model\Employee;
 
+use AluraBank\Model\Accessor;
 use AluraBank\Model\Cpf;
 
 class Developer extends Employee
 {
+
+    use Accessor;
+
     public function __construct(Cpf $cpf, string $name, float $wage)
     {
         parent::__construct($cpf, $name, $wage);
