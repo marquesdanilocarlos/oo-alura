@@ -2,10 +2,7 @@
 
 require_once __DIR__ . "/autoload.php";
 
-use AluraBank\Model\Account\Checking;
-use AluraBank\Model\Account\Holder;
-use AluraBank\Model\Address;
-use AluraBank\Model\Cpf;
+use AluraBank\Model\{Account\Checking, Account\Holder, Address, Cpf};
 
 $checkingAccount = new Checking(
     new Holder(
