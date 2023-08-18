@@ -2,11 +2,13 @@
 
 namespace AluraBank\Model\Account;
 
-class Account
+abstract class Account
 {
     private Holder $holder;
-    private float $balance;
+    protected float $balance;
     private static int $accountNumber = 0;
+
+    protected float $withdrawPercent;
 
     public function __construct(Holder $holder)
     {
@@ -18,6 +20,7 @@ class Account
 
     public function withdraw(float $value): void
     {
+        $value = $this->getWithdrawTax($value);
         if ($value > $this->balance) {
             echo "Saldo indisponível";
             return;
@@ -38,18 +41,6 @@ class Account
         echo "Depósito de {$value} realizado com sucesso! <br/>";
     }
 
-    public function transfer(float $value, self $destinyAccount): void
-    {
-        if ($value > $this->balance) {
-            echo "Saldo indisponível";
-            return;
-        }
-
-        $this->withdraw($value);
-        $destinyAccount->deposit($value);
-        echo "Transferência realizada com sucesso! <br/>";
-    }
-
     public function getBalance(): string
     {
         return "R$ " . number_format($this->balance, 2, ",", ".");
@@ -66,9 +57,10 @@ class Account
         self::$accountNumber--;
     }
 
-
     public function getHolder(): Holder
     {
         return $this->holder;
     }
+
+    abstract public function getWithdrawTax(float $value): float;
 }
