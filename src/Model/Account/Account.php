@@ -1,5 +1,7 @@
 <?php
 
+namespace AluraBank\Model\Account;
+
 class Account
 {
     private Holder $holder;

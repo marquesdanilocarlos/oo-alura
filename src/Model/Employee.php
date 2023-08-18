@@ -1,5 +1,7 @@
 <?php
 
+namespace AluraBank\Model;
+
 class Employee extends Person
 {
     private string $role;

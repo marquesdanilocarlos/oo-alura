@@ -1,5 +1,7 @@
 <?php
 
+namespace AluraBank\Model;
+
 class Address
 {
     private string $street;

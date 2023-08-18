@@ -1,5 +1,11 @@
 <?php
 
+namespace AluraBank\Model\Account;
+
+use AluraBank\Model\Address;
+use AluraBank\Model\Cpf;
+use AluraBank\Model\Person;
+
 class Holder extends Person
 {
     private Address $address;

@@ -1,5 +1,7 @@
 <?php
 
+namespace AluraBank\Model;
+
 class Cpf
 {
     private string $number = "";
