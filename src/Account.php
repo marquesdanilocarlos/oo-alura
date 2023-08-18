@@ -4,7 +4,14 @@ class Account
 {
     private string $holderCpf;
     private string $holderName;
-    private float $balance = 0;
+    private float $balance;
+
+    public function __construct(string $holderCpf, string $holderName)
+    {
+        $this->holderCpf = $holderCpf;
+        $this->holderName = $holderName;
+        $this->balance = 0;
+    }
 
     public function withdraw(float $value): void
     {
@@ -54,20 +61,5 @@ class Account
     {
         return "R$ " . number_format($this->balance, 2, ",", ".");
     }
-
-    public function setHolderCpf(string $holderCpf): void
-    {
-        $this->holderCpf = $holderCpf;
-    }
-
-    public function setHolderName(string $holderName): void
-    {
-        $this->holderName = $holderName;
-    }
-
-    /*public function setBalance(float $balance): void
-    {
-        $this->balance = $balance;
-    }*/
 
 }
