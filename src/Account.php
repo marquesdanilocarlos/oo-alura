@@ -2,9 +2,9 @@
 
 class Account
 {
-    public string $holderCpf;
-    public string $holderName;
-    public float $balance = 0;
+    private string $holderCpf;
+    private string $holderName;
+    private float $balance = 0;
 
     public function withdraw(float $value): void
     {
@@ -38,6 +38,36 @@ class Account
         $this->withdraw($value);
         $destinyAccount->deposit($value);
         echo "Transferência realizada com sucesso! <br/>";
+    }
+
+    public function getHolderCpf(): string
+    {
+        return $this->holderCpf;
+    }
+
+    public function getHolderName(): string
+    {
+        return $this->holderName;
+    }
+
+    public function getBalance(): string
+    {
+        return "R$ " . number_format($this->balance, 2, ",", ".");
+    }
+
+    public function setHolderCpf(string $holderCpf): void
+    {
+        $this->holderCpf = $holderCpf;
+    }
+
+    public function setHolderName(string $holderName): void
+    {
+        $this->holderName = $holderName;
+    }
+
+    public function setBalance(float $balance): void
+    {
+        $this->balance = $balance;
     }
 
 }
