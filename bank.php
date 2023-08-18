@@ -1,17 +1,12 @@
 <?php
 
+require_once __DIR__ . "/autoload.php";
+
 use AluraBank\Model\Account\Account;
 use AluraBank\Model\Account\Holder;
 use AluraBank\Model\Address;
 use AluraBank\Model\Cpf;
 use AluraBank\Model\Employee;
-
-require __DIR__ . "/src/Model/Person.php";
-require __DIR__ . "/src/Model/Account/Account.php";
-require __DIR__ . "/src/Model/Account/Holder.php";
-require __DIR__ . "/src/Model/Cpf.php";
-require __DIR__ . "/src/Model/Address.php";
-require __DIR__ . "/src/Model/Employee.php";
 
 $address = new Address("QA 13 MR Casa", "08", "Setor Sul", "Planaltina Goiás");
 
