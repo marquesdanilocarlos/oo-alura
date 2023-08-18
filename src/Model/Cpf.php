@@ -2,7 +2,7 @@
 
 namespace AluraBank\Model;
 
-class Cpf
+final class Cpf
 {
     private string $number = "";
 
