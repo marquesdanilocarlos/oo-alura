@@ -2,6 +2,8 @@
 
 namespace AluraBank\Model;
 
+use \InvalidArgumentException;
+
 final class Cpf
 {
     private string $number = "";
@@ -18,14 +20,12 @@ final class Cpf
 
         // Verifica se foi informado todos os digitos corretamente
         if (strlen($number) != 11) {
-            echo "Cpf inválido! <br/>";
-            exit;
+            throw new InvalidArgumentException("Cpf inválido!");
         }
 
         // Verifica se foi informada uma sequência de digitos repetidos. Ex: 111.111.111-11
         if (preg_match('/(\d)\1{10}/', $number)) {
-            echo "Cpf inválido! <br/>";
-            exit;
+            throw new InvalidArgumentException("Cpf inválido!");
         }
 
         // Faz o calculo para validar o Cpf
@@ -35,8 +35,7 @@ final class Cpf
             }
             $d = ((10 * $d) % 11) % 10;
             if ($number[$c] != $d) {
-                echo "Cpf inválido! <br/>";
-                exit;
+                throw new InvalidArgumentException("Cpf inválido!");
             }
         }
 

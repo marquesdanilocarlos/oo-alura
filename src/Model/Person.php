@@ -4,7 +4,7 @@ namespace AluraBank\Model;
 
 abstract class Person
 {
-    protected string $name;
+    protected string $name = "";
     protected Cpf $cpf;
 
     public function __construct(Cpf $cpf, string $name)

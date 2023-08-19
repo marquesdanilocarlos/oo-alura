@@ -2,6 +2,8 @@
 
 namespace AluraBank\Model\Account;
 
+use AluraBank\Model\Exception\InsuficientFundsException;
+
 class Checking extends Account
 {
     public function __construct(Holder $holder)
@@ -18,8 +20,7 @@ class Checking extends Account
     public function transfer(float $value, self $destinyAccount): void
     {
         if ($value > $this->balance) {
-            echo "Saldo indisponível";
-            return;
+            throw new InsuficientFundsException($value, $this->balance);
         }
 
         $this->withdraw($value);

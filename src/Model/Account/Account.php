@@ -2,6 +2,9 @@
 
 namespace AluraBank\Model\Account;
 
+use AluraBank\Model\Exception\InsuficientFundsException;
+use InvalidArgumentException;
+
 abstract class Account
 {
     private Holder $holder;
@@ -20,10 +23,9 @@ abstract class Account
 
     public function withdraw(float $value): void
     {
-        $value = $this->getWithdrawTax($value);
+        $value = $value + $this->getWithdrawTax($value);
         if ($value > $this->balance) {
-            echo "Saldo indisponível";
-            return;
+            throw new InsuficientFundsException($value, $this->balance);
         }
 
         $this->balance -= $value;
@@ -33,8 +35,7 @@ abstract class Account
     public function deposit(float $value): void
     {
         if ($value <= 0) {
-            echo "O valor a depositar deve ser um valor positivo.";
-            return;
+            throw new InvalidArgumentException("O valor a depositar deve ser um valor positivo.");
         }
 
         $this->balance += $value;
